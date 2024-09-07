@@ -1,0 +1,82 @@
+1. Print All Odd Numbers from 1 to 100
+ans-
+#include<iostream>
+using namespace std;
+int main(){
+    for(int i=1;i<=100;i+=2)
+        cout<<i<<" ";
+    cout<<endl;
+    return 0;
+}
+
+2. Print All Numbers from 1 to 100 that are Divisible by 3
+ans-
+#include<iostream>
+using namespace std;
+int main(){
+    for(int i=1;i<=100;i++)
+        if(i%3==0)
+            cout<<i<<" ";
+    cout<<endl;
+    return 0;
+}
+
+3. Print the Table of ‘n’
+ans-
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    for(int i=1;i<=10;i++)
+        cout<<n<<"*"<<i<<"="<<n*i<<endl;
+    return 0;
+}
+
+4. Display the Arithmetic Progression (AP) - 4, 7, 10, 13, 16, ... Up to ‘n’ Terms
+ans-
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int a=4,d=3;
+    for(int i=0;i<n;i++)
+        cout<<a+i*d<<" ";
+    cout<<endl;
+    return 0;
+}
+
+5. Display the Geometric Progression (GP) - 3, 12, 48, ... Up to ‘n’ Terms
+ans-
+#include<iostream>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int a=3,r=4;
+    int term=a;
+    for(int i=0;i<n;i++){
+        cout<<term<<" ";
+        term*=r;
+    }
+    cout<<endl;
+    return 0;
+}
+
+6. Print All ASCII Values and Their Equivalent Characters of 26 Alphabets Using a While Loop
+ans-
+
+#include<iostream>
+using namespace std;
+int main(){
+    char ch='A';
+    int count=0;
+    while(count<26){
+        cout<<"ASCII value of "<<ch<<" is "<<(int)ch<<endl;
+        ch++;
+        count++;
+    }
+    return 0;
+}
+
