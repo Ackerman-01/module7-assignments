@@ -1,0 +1,106 @@
+Q1.What is an in-place sorting algorithm?
+a) It needs O(1) or O(logn) memory to create auxiliary locations
+b) The input is already sorted and in-place
+c) It requires additional storage
+d) It requires additional space
+Ans-a) It needs O(1) or O(logn) memory to create auxiliary locations
+
+Q2.In the following scenarios, when will you use selection sort?
+a) The input is already sorted
+b) A large file has to be sorted
+c) Large values need to be sorted with small keys
+d) Small values need to be sorted with large keys
+Ans-d) Small values need to be sorted with large keys
+
+Q3.Given an integer array and an integer k where k <= size of array, we need to return the kth smallest element of the array.
+Ans-
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int kthSmallest(int arr[], int n, int k) {
+    sort(arr, arr + n);
+    return arr[k - 1];
+}
+int main() {
+    int n, k;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter the elements of the array: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    cout << "Enter the value of k: ";
+    cin >> k;
+    cout << "The " << k << "th smallest element is: " << kthSmallest(arr, n, k);
+    return 0;
+}
+
+Q4.Find the minimum operations required to sort the array in increasing order. In one operation, you can set each occurrence of one element to 0.
+Ans-
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+int minOperationsToSort(int arr[], int n) {
+    unordered_map<int, int> freq;
+    for(int i = 0; i < n; i++) {
+        freq[arr[i]]++;
+    }
+    int maxFreq = 0;
+    for(auto it : freq) {
+        maxFreq = max(maxFreq, it.second);
+    }
+    return n - maxFreq;
+}
+int main() {
+    int n;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter the elements of the array: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    cout << "Minimum operations required: " << minOperationsToSort(arr, n);
+    return 0;
+}
+
+Q5.Given an array, arr[] containing n integers, the task is to find an integer (say K) such that after replacing each and every index of the array by |ai – K| where ( i ∈ [1, n]), results in a sorted array. If no such integer exists that satisfies the above condition then return -1.
+Ans-
+#include <iostream>
+#include <algorithm>
+using namespace std;
+bool checkSortedAfterReplacement(int arr[], int n, int k) {
+    int temp[n];
+    for(int i = 0; i < n; i++) {
+        temp[i] = abs(arr[i] - k);
+    }
+    for(int i = 1; i < n; i++) {
+        if(temp[i] < temp[i-1]) {
+            return false;
+        }
+    }
+    return true;
+}
+int findK(int arr[], int n) {
+    int minElement = *min_element(arr, arr + n);
+    int maxElement = *max_element(arr, arr + n);
+    for(int k = minElement; k <= maxElement; k++) {
+        if(checkSortedAfterReplacement(arr, n, k)) {
+            return k;
+        }
+    }
+    return -1;
+}
+int main() {
+    int n;
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
+    int arr[n];
+    cout << "Enter the elements of the array: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    cout << "The value of K is: " << findK(arr, n);
+    return 0;
+}
