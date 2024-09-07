@@ -1,0 +1,117 @@
+Q1.Count the number of triplets whose sum is equal to the given value x.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n, x, count = 0;
+    cin >> n >> x;
+    int arr[n];
+    for(int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+    for(int i = 0; i < n - 2; ++i) {
+        for(int j = i + 1; j < n - 1; ++j) {
+            for(int k = j + 1; k < n; ++k) {
+                if(arr[i] + arr[j] + arr[k] == x) {
+                    count++;
+                }
+            }
+        }
+    }
+    cout << count;
+    return 0;
+}
+
+Q2.Find the factorial of a large number.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+void multiply(int arr[], int &size, int x) {
+    int carry = 0;
+    for(int i = 0; i < size; ++i) {
+        int prod = arr[i] * x + carry;
+        arr[i] = prod % 10;
+        carry = prod / 10;
+    }
+    while(carry) {
+        arr[size] = carry % 10;
+        carry /= 10;
+        size++;
+    }
+}
+void factorial(int n) {
+    int arr[1000];
+    arr[0] = 1;
+    int size = 1;
+    for(int i = 2; i <= n; ++i) {
+        multiply(arr, size, i);
+    }
+    for(int i = size - 1; i >= 0; --i) {
+        cout << arr[i];
+    }
+}
+int main() {
+    int n;
+    cin >> n;
+    factorial(n);
+    return 0;
+}
+
+Q3.Find the first non-repeating element in the array.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n], freq[1000] = {0};
+    for(int i = 0; i < n; ++i) {
+        cin >> arr[i];
+        freq[arr[i]]++;
+    }
+    for(int i = 0; i < n; ++i) {
+        if(freq[arr[i]] == 1) {
+            cout << arr[i];
+            break;
+        }
+    }
+    return 0;
+}
+
+Q4.Check if an array is a subset of another.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+bool isSubset(int arr1[], int n, int arr2[], int m) {
+    for(int i = 0; i < m; ++i) {
+        bool found = false;
+        for(int j = 0; j < n; ++j) {
+            if(arr2[i] == arr1[j]) {
+                found = true;
+                break;
+            }
+        }
+        if(!found) {
+            return false;
+        }
+    }
+    return true;
+}
+int main() {
+    int n, m;
+    cin >> n >> m;
+    int arr1[n], arr2[m];
+    for(int i = 0; i < n; ++i) {
+        cin >> arr1[i];
+    }
+    for(int i = 0; i < m; ++i) {
+        cin >> arr2[i];
+    }
+    if(isSubset(arr1, n, arr2, m)) {
+        cout << "Array 2 is a subset of Array 1";
+    } else {
+        cout << "Array 2 is not a subset of Array 1";
+    }
+    return 0;
+}
+
