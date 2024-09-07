@@ -1,0 +1,175 @@
+Q1. Predict the output
+
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+while ('1' < '2')
+cout << "In while loop" << endl;
+}
+
+ans=
+In while loop
+In while loop
+In while loop
+..
+.
+(Infinite Loop)
+
+
+q2. Predict the output
+
+#include <bits/stdc++.h>
+using namespace std;
+int main( ) {
+int t = 10;
+while (t /= 2) {
+cout << "Hello" << endl;
+}
+}
+ans=
+Hello
+Hello
+Hello
+Hello
+
+
+q3. Predict the output
+
+#include <bits/stdc++.h>
+using namespace std;
+int main( ) {
+for (int x = 1; x * x <= 10; x++)
+cout << "In for loop" << endl;
+}
+ans=
+In for loop
+In for loop
+In for loop
+In for loop
+
+
+q4. Predict the output
+
+#include <bits/stdc++.h>
+using namespace std;
+int main( ) {
+int x = 10, y = 0 ;
+while ( x >= y ) {
+x-- ;
+y++ ;
+cout << x << " " << y << endl ;
+}
+}
+ans=
+9 1
+8 2
+7 3
+6 4
+5 5
+4 6
+3 7
+2 8
+1 9
+0 10
+
+q5.WAP to print the sum of all the even digits of a given number.
+ans=
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    cin >> number;
+    int sum = 0;
+
+    while (number > 0) {
+        int digit = number % 10;
+        if (digit % 2 == 0) {
+            sum += digit;
+        }
+        number /= 10;
+    }
+
+    cout << sum << endl;
+    return 0;
+}
+
+q6. WAP to print the sum of a given number and its reverse.
+ans=
+#include <iostream>
+using namespace std;
+
+int main() {
+    int number;
+    cin >> number;
+    int original = number;
+    int reverse = 0;
+
+    while (number > 0) {
+        reverse = reverse * 10 + (number % 10);
+        number /= 10;
+    }
+
+    cout << original + reverse << endl;
+    return 0;
+}
+
+q7. Print the factorials of first ‘n’ numbers
+ans=
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    long long fact = 1;
+
+    for (int i = 1; i <= n; ++i) {
+        fact *= i;
+        cout << fact << endl;
+    }
+
+    return 0;
+}
+
+q8.Print first ‘n’ fibonacci numbers.
+ans= #include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    int a = 1, b = 1;
+
+    for (int i = 0; i < n; ++i) {
+        cout << a << " ";
+        int next = a + b;
+        a = b;
+        b = next;
+    }
+
+    cout << endl;
+    return 0;
+}
+
+q9.Write a program to print out all Armstrong numbers between 1 and 500. If the sum of cubes of
+each digit of the number is equal to the number itself, then the number is called an Armstrong
+number. For example, 153 = ( 1 * 1 * 1 ) + ( 5 * 5 * 5 ) + ( 3 * 3 * 3 )
+ans=
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int num = 1; num <= 500; ++num) {
+        int sum = 0, temp = num;
+        while (temp > 0) {
+            int digit = temp % 10;
+            sum += digit * digit * digit;
+            temp /= 10;
+        }
+        if (sum == num) {
+            cout << num << endl;
+        }
+    }
+    return 0;
+}
