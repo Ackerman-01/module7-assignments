@@ -9,7 +9,7 @@ using namespace std;
 int main() {
     int amount;
     int n1, n2, n5, n10, n20, n50, n100, n500;
-    // Initialize note counters
+
     n1 = n2 = n5 = n10 = n20 = n50 = n100 = n500 = 0;
 
     cout << "Please Enter Your total Amount to find the notes: ";
@@ -64,7 +64,7 @@ int main() {
             break;
     }
 
-    // Output the results
+    
     cout << "Notes of 500 = " << n500 << endl;
     cout << "Notes of 100 = " << n100 << endl;
     cout << "Notes of 50 = " << n50 << endl;
