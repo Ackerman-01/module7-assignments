@@ -1,0 +1,116 @@
+Q1.Calculate the product of all the elements in the given array.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n], product = 1;
+    for(int i = 0; i < n; ++i) {
+        cin >> arr[i];
+        product *= arr[i];
+    }
+    cout << product;
+    return 0;
+}
+
+Q2.Find the second largest element in the given Array in one pass.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+    int largest = INT_MIN, secondLargest = INT_MIN;
+    for(int i = 0; i < n; ++i) {
+        cin >> arr[i];
+        if(arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } else if(arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+    cout <<"\n"<< secondLargest;
+    return 0;
+}
+
+Q3.Find the minimum value out of all elements in the array.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n], minVal = INT_MAX;
+    for(int i = 0; i < n; ++i) {
+        cin >> arr[i];
+        if(arr[i] < minVal) {
+            minVal = arr[i];
+        }
+    }
+    cout << minVal;
+    return 0;
+}
+
+Q4.Given an array, predict if the array contains duplicates or not.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+    set<int> elements;
+    bool hasDuplicates = false;
+    for(int i = 0; i < n; ++i) {
+        cin >> arr[i];
+        if(elements.find(arr[i]) != elements.end()) {
+            hasDuplicates = true;
+            break;
+        }
+        elements.insert(arr[i]);
+    }
+    if(hasDuplicates) {
+        cout << "Array contains duplicates";
+    } else {
+        cout << "No duplicates in the array";
+    }
+    return 0;
+}
+
+Q5.WAP to find the smallest missing positive element in the sorted Array that contains only positive elements.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+    for(int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+    int missing = 1;
+    for(int i = 0; i < n; ++i) {
+        if(arr[i] == missing) {
+            missing++;
+        } else if(arr[i] > missing) {
+            break;
+        }
+    }
+    cout << missing;
+    return 0;
+}
+
+Q6.Predict the output.
+int main() {
+    int sub[50], i;
+    for(i = 0; i <= 48; i++);
+    {
+        sub[i] = i;
+        cout << sub[i] << endl;
+    }
+    return 0;
+}
+Ans-Garbage value followed by runtime error due to the semicolon after the for loop.
