@@ -1,0 +1,78 @@
+Q1 .Write a function to print squares of first n natural numbers, taking n as argument to the function
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+void printSquares(int n) {
+    for(int i = 1; i <= n; ++i) {
+        cout << i * i << " ";
+    }
+}
+int main() {
+    int n;
+    cin >> n;
+    printSquares(n);
+    return 0;
+}
+
+Q2 .Write a function that takes the radius of a circle as an argument and returns its area.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+double circleArea(double r) {
+    return 3.14159 * r * r;
+}
+int main() {
+    double r;
+    cin >> r;
+    cout << circleArea(r);
+    return 0;
+}
+
+Q3.Given two numbers a and b, write a function to print all odd numbers between them.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+void printOddNumbers(int a, int b) {
+    for(int i = a; i <= b; ++i) {
+        if(i % 2 != 0) {
+            cout << i << " ";
+        }
+    }
+}
+int main() {
+    int a, b;
+    cin >> a >> b;
+    printOddNumbers(a, b);
+    return 0;
+}
+
+Q4.Write a function to count the number of digits in a number and then print the square of this number.
+Ans-
+#include<bits/stdc++.h>
+using namespace std;
+int countDigits(int n) {
+    int count = 0;
+    while(n != 0) {
+        count++;
+        n /= 10;
+    }
+    return count;
+}
+int main() {
+    int n;
+    cin >> n;
+    int digits = countDigits(n);
+    cout << n * n;
+    return 0;
+}
+
+Q5.The minimum number of functions present in any C++ program is:
+Ans- 1
+
+Q6.State True and False:
+A function may be called more than once from any other function:True
+It is necessary for a function to return some value:  False
+
+Q7.Explore:
+Can the same function name be used for different functions without any conflict?
+Ans- Yes, by using function overloading in C++, the same function name can be used for different functions.
