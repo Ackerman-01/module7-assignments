@@ -1,0 +1,96 @@
+Q1: Write a program to find the minimum element of an array using recursion. 
+Ans=
+#include <iostream>
+using namespace std;
+int findMin(int arr[], int n) {
+    if (n == 1) return arr[0];
+    int min = findMin(arr, n - 1);
+    return (arr[n - 1] < min) ? arr[n - 1] : min;
+}
+int main() {
+    int arr[] = {5, 2, 9, 1, 5, 6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Minimum element: " << findMin(arr, n) << endl;
+    return 0;
+}
+
+Q2: Write a program to find the sum of all elements in an array using recursion. 
+Ans=
+#include <iostream>
+using namespace std;
+int sumArray(int arr[], int n) {
+    if (n <= 0) return 0;
+    return arr[n - 1] + sumArray(arr, n - 1);
+}
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    cout << "Sum of elements: " << sumArray(arr, n) << endl;
+    return 0;
+}
+Q3: Write a program to find the index of a given element in an array using recursion. If the element is present, return its index; otherwise, return -1.
+Ans=
+#include <iostream>
+using namespace std;
+int findIndex(int arr[], int n, int target) {
+    if (n < 0) return -1;
+    if (arr[n] == target) return n;
+    return findIndex(arr, n - 1, target);
+}
+int main() {
+    int arr[] = {10, 20, 30, 40, 50};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int target = 30;
+    cout << "Index of " << target << ": " << findIndex(arr, n - 1, target) << endl;
+    return 0;
+}
+
+Q4: Print all the elements of an array in reverse order using recursion. 
+Ans=
+#include <iostream>
+using namespace std;
+void printReverse(int arr[], int n) {
+    if (n < 0) return;
+    cout << arr[n] << " ";
+    printReverse(arr, n - 1);
+}
+int main() {
+    int arr[] = {1, 2, 3, 4, 5};
+    int n = sizeof(arr) / sizeof(arr[0]) - 1;
+    printReverse(arr, n);
+    cout << endl;
+    return 0;
+}
+Q5: Given an integer array nums that may contain duplicates, return all possible subsets (the power set). The solution set must not contain duplicate subsets. Return the solution in any order. 
+Ans=
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#define MAX 100
+
+void printSubsets(int arr[], int n, bool subset[], int subsetSize) {
+    for (int i = 0; i < subsetSize; ++i) {
+        if (subset[i]) cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+void subsetsWithDupHelper(int arr[], int n, int start, bool subset[], int subsetSize) {
+    printSubsets(arr, n, subset, subsetSize);
+    for (int i = start; i < n; ++i) {
+        if (i > start && arr[i] == arr[i - 1]) continue;
+        subset[i] = true;
+        subsetsWithDupHelper(arr, n, i + 1, subset, subsetSize);
+        subset[i] = false;
+    }
+}
+
+int main() {
+    int arr[] = {1, 2, 2};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    bool subset[MAX] = {false};
+    sort(arr, arr + n);
+    subsetsWithDupHelper(arr, n, 0, subset, n);
+    return 0;
+}
+
